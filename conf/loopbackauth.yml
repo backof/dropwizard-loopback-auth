@@ -1,0 +1,20 @@
+logbackXmlFile: ./conf/logback.xml
+mongohost: localhost
+mongoport: 27017
+mongodb: loopbackdb
+authenticationCachePolicy: maximumSize=10000, expireAfterAccess=10m
+
+
+server:
+  #softNofileLimit: 5000
+  #hardNofileLimit: 5000
+  applicationConnectors:
+    - type: http
+      port: 8888
+  adminConnectors:
+    - type: http
+      port: 8889
+  requestLog:
+      appenders: []
+
+    
