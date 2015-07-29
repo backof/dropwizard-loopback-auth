@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.bson.Document;
 
-import com.backof.dwloopback.api.Collections;
+import com.backof.dwloopback.core.mongo.Collections;
 import com.google.common.base.Optional;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
