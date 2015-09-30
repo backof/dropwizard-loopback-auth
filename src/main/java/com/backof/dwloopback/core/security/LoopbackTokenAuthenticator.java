@@ -51,7 +51,7 @@ public class LoopbackTokenAuthenticator implements Authenticator<AccessToken, Us
 			user.setTtl(accessTokenDoc.getInteger("ttl"));
 			user.setUserId(accessTokenDoc.getString("userId"));
 			checkTokenExpiration(user);
-			Document userDoc = mongoClient.getDatabase("thanktank").getCollection(Collections.User.getName())
+			Document userDoc = mongoClient.getDatabase("loopback").getCollection(Collections.User.getName())
 					.find(eq("_id", user.getUserId())).first();
 			if (userDoc != null) {
 				user.setUsername(userDoc.getString("username"));
@@ -59,11 +59,11 @@ public class LoopbackTokenAuthenticator implements Authenticator<AccessToken, Us
 				user.setFirstName(userDoc.getString("firstName"));
 				user.setEmail(userDoc.getString("email"));
 				// get roles
-				FindIterable<Document> roleDocs = mongoClient.getDatabase("thanktank")
+				FindIterable<Document> roleDocs = mongoClient.getDatabase("loopback")
 						.getCollection(Collections.RoleMapping.getName()).find(eq("principalId", user.getUserId()));
 				List<String> roles = new ArrayList<String>();
 				for (Document userRole : roleDocs) {
-					Document role = mongoClient.getDatabase("thanktank").getCollection(Collections.Role.getName())
+					Document role = mongoClient.getDatabase("loopback").getCollection(Collections.Role.getName())
 							.find(eq("_id", userRole.getObjectId("roleId"))).first();
 					if (role != null) {
 						roles.add(role.getString("name"));
