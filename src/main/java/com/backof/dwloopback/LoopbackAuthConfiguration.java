@@ -33,7 +33,7 @@ public class LoopbackAuthConfiguration extends Configuration {
  
     @JsonProperty
     @NotEmpty
-    public String mongodb = "thanktank";
+    public String mongodb = "loopback";
     
     @JsonProperty
     public CacheBuilderSpec authenticationCachePolicy;
